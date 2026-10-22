@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SL Sports - Vestindo os Melhores</title>
+  <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Dancing+Script:wght@700&display=swap');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Montserrat', Arial, sans-serif;
+      background: #0a0a0a;
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    /* Hero gradient overlay */
+    .hero-bg {
+      background: linear-gradient(135deg, #0a0a0a 0%, #1a0000 30%, #0a0a0a 60%, #000 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-bg::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -30%;
+      width: 80%;
+      height: 200%;
+      background: radial-gradient(ellipse, rgba(220,20,20,0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-bg::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 120px;
+      background: linear-gradient(to top, #0a0a0a, transparent);
+      pointer-events: none;
+    }
+
+    /* Animated red glow pulse */
+    @keyframes glowPulse {
+      0%, 100% { box-shadow: 0 0 30px rgba(220,20,20,0.3), 0 0 60px rgba(220,20,20,0.1); }
+      50% { box-shadow: 0 0 50px rgba(220,20,20,0.5), 0 0 100px rgba(220,20,20,0.2); }
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    @keyframes slideInLeft {
+      from { opacity: 0; transform: translateX(-60px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    @keyframes slideInRight {
+      from { opacity: 0; transform: translateX(60px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    @keyframes slideInUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes scaleIn {
+      from { opacity: 0; transform: scale(0.8); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .animate-slide-left { animation: slideInLeft 0.8s ease-out forwards; }
+    .animate-slide-right { animation: slideInRight 0.8s ease-out forwards; }
+    .animate-slide-up { animation: slideInUp 0.8s ease-out forwards; }
+    .animate-fade-in { animation: fadeIn 1s ease-out forwards; }
+    .animate-scale-in { animation: scaleIn 0.6s ease-out forwards; }
+    .animate-float { animation: float 3s ease-in-out infinite; }
+    .animate-glow { animation: glowPulse 3s ease-in-out infinite; }
+
+    .delay-100 { animation-delay: 0.1s; }
+    .delay-200 { animation-delay: 0.2s; }
+    .delay-300 { animation-delay: 0.3s; }
+    .delay-400 { animation-delay: 0.4s; }
+    .delay-500 { animation-delay: 0.5s; }
+    .delay-600 { animation-delay: 0.6s; }
+
+    /* Red accent line */
+    .red-line {
+      width: 60px;
+      height: 4px;
+      background: linear-gradient(90deg, #dc1414, #ff4444);
+      border-radius: 2px;
+    }
+
+    /* CTA button styles */
+    .cta-btn {
+      background: linear-gradient(135deg, #dc1414 0%, #b01010 100%);
+      color: #fff;
+      padding: 16px 40px;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      transition: all 0.3s ease;
+      border: none;
+      cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .cta-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 40px rgba(220,20,20,0.4);
+      background: linear-gradient(135deg, #ff2020 0%, #dc1414 100%);
+    }
+
+    .cta-btn-outline {
+      background: transparent;
+      color: #fff;
+      padding: 14px 36px;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      transition: all 0.3s ease;
+      border: 2px solid rgba(220,20,20,0.6);
+      cursor: pointer;
+      letter-spacing: 0.5px;
+    }
+    .cta-btn-outline:hover {
+      border-color: #dc1414;
+      background: rgba(220,20,20,0.1);
+      transform: translateY(-2px);
+    }
+
+    /* Service card */
+    .service-card {
+      background: linear-gradient(145deg, #141414 0%, #0f0f0f 100%);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 16px;
+      padding: 40px 30px;
+      text-align: center;
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, #dc1414, transparent);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+    .service-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(220,20,20,0.3);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+    }
+    .service-card:hover::before {
+      opacity: 1;
+    }
+
+    .service-icon {
+      width: 70px;
+      height: 70px;
+      border-radius: 16px;
+      background: rgba(220,20,20,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      font-size: 32px;
+    }
+
+    /* Differentials */
+    .diff-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+      padding: 24px;
+      border-radius: 12px;
+      transition: all 0.3s ease;
+    }
+    .diff-item:hover {
+      background: rgba(220,20,20,0.04);
+    }
+    .diff-number {
+      flex-shrink: 0;
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #dc1414, #b01010);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 1.2rem;
+    }
+
+    /* Stats section */
+    .stat-card {
+      text-align: center;
+      padding: 30px 20px;
+    }
+    .stat-number {
+      font-size: 3rem;
+      font-weight: 900;
+      background: linear-gradient(135deg, #dc1414, #ff6644);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1;
+    }
+
+    /* Testimonial card */
+    .testimonial-card {
+      background: linear-gradient(145deg, #141414 0%, #0f0f0f 100%);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 16px;
+      padding: 30px;
+      position: relative;
+    }
+    .testimonial-card::before {
+      content: '"';
+      position: absolute;
+      top: 10px;
+      left: 20px;
+      font-size: 5rem;
+      color: rgba(220,20,20,0.15);
+      font-family: Georgia, serif;
+      line-height: 1;
+    }
+
+    /* Process step */
+    .process-step {
+      text-align: center;
+      position: relative;
+    }
+    .process-step-icon {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, rgba(220,20,20,0.15), rgba(220,20,20,0.05));
+      border: 2px solid rgba(220,20,20,0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      font-size: 32px;
+      transition: all 0.3s ease;
+    }
+    .process-step:hover .process-step-icon {
+      background: linear-gradient(135deg, #dc1414, #b01010);
+      border-color: #dc1414;
+      transform: scale(1.1);
+    }
+
+    /* Gallery grid */
+    .gallery-item {
+      border-radius: 12px;
+      overflow: hidden;
+      background: #141414;
+      aspect-ratio: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(255,255,255,0.06);
+      transition: all 0.4s ease;
+      position: relative;
+    }
+    .gallery-item:hover {
+      border-color: rgba(220,20,20,0.3);
+      transform: scale(1.03);
+    }
+    .gallery-item::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(220,20,20,0.1), transparent);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .gallery-item:hover::after {
+      opacity: 1;
+    }
+
+    /* Floating WhatsApp button */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      width: 60px;
+      height: 60px;
+      background: #25D366;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+      z-index: 1000;
+      transition: all 0.3s ease;
+      text-decoration: none;
+    }
+    .whatsapp-float:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 30px rgba(37,211,102,0.6);
+    }
+
+    /* Section title styling */
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      line-height: 1.2;
+    }
+    .section-subtitle {
+      color: #888;
+      font-size: 1.1rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* Navbar */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 999;
+      padding: 16px 0;
+      transition: all 0.3s ease;
+      background: transparent;
+    }
+    .navbar.scrolled {
+      background: rgba(10,10,10,0.95);
+      backdrop-filter: blur(10px);
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+
+    /* Counter animation */
+    .counter { display: inline-block; }
+
+    /* Mobile hamburger */
+    .hamburger { display: none; cursor: pointer; }
+    .hamburger span {
+      display: block;
+      width: 28px;
+      height: 3px;
+      background: #fff;
+      margin: 5px 0;
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .section-title { font-size: 1.8rem; }
+      .stat-number { font-size: 2.2rem; }
+      .hamburger { display: block; }
+      .nav-links { 
+        display: none !important;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background: rgba(10,10,10,0.98);
+        flex-direction: column;
+        padding: 20px;
+        gap: 15px;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+      }
+      .nav-links.active { display: flex !important; }
+      .cta-btn { padding: 14px 30px; font-size: 1rem; }
+    }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #0a0a0a; }
+    ::-webkit-scrollbar-thumb { background: #dc1414; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #ff2020; }
+
+    /* Logo container */
+    .logo-container {
+      width: 260px;
+      height: 260px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,255,255,0.95) 0%, rgba(240,240,240,0.9) 70%, rgba(200,200,200,0.4) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 30px;
+      position: relative;
+    }
+    .logo-container::before {
+      content: '';
+      position: absolute;
+      inset: -3px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #dc1414, #333, #dc1414);
+      z-index: -1;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar" id="navbar">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between;">
+      <a href="#" style="display: flex; align-items: center; gap: 10px; text-decoration: none; color: #fff;">
+        <span style="font-weight: 800; font-size: 1.4rem;">SL<span style="color: #dc1414;">SPORTS</span></span>
+      </a>
+      <div class="nav-links" id="navLinks" style="display: flex; align-items: center; gap: 30px;">
+        <a href="#servicos" style="color: #ccc; text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.3s;" onmouseover="this.style.color='#dc1414'" onmouseout="this.style.color='#ccc'">Serviços</a>
+        <a href="#diferenciais" style="color: #ccc; text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.3s;" onmouseover="this.style.color='#dc1414'" onmouseout="this.style.color='#ccc'">Diferenciais</a>
+        <a href="#processo" style="color: #ccc; text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.3s;" onmouseover="this.style.color='#dc1414'" onmouseout="this.style.color='#ccc'">Como Funciona</a>
+        <a href="#depoimentos" style="color: #ccc; text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.3s;" onmouseover="this.style.color='#dc1414'" onmouseout="this.style.color='#ccc'">Depoimentos</a>
+        <a href="#contato" class="cta-btn" style="padding: 10px 24px; font-size: 0.85rem;">Orçamento</a>
+      </div>
+      <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero-bg" style="min-height: 100vh; display: flex; align-items: center; padding: 120px 24px 80px;">
+    <div style="max-width: 1200px; margin: 0 auto; width: 100%; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 60px;">
+      
+      <!-- Left content -->
+      <div style="flex: 1; min-width: 300px;">
+        <div class="animate-slide-left" style="opacity:0;">
+          <div style="display: inline-block; background: rgba(220,20,20,0.1); border: 1px solid rgba(220,20,20,0.3); border-radius: 50px; padding: 8px 20px; margin-bottom: 24px;">
+            <span style="color: #dc1414; font-weight: 600; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px;">📍 Boituva - SP</span>
+          </div>
+        </div>
+        
+        <h1 class="animate-slide-left delay-100" style="font-size: 3.5rem; font-weight: 900; line-height: 1.1; margin-bottom: 24px; opacity:0;">
+          Uniforme de<br>
+          <span style="background: linear-gradient(135deg, #dc1414, #ff4444); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Alta Performance</span><br>
+          para seu time
+        </h1>
+        
+        <p class="animate-slide-left delay-200" style="color: #999; font-size: 1.15rem; line-height: 1.7; margin-bottom: 40px; max-width: 500px; opacity:0;">
+          Camisas personalizadas, uniformes esportivos e bandeiras com qualidade profissional. 
+          Da arte ao produto final, cada peça feita sob medida para representar sua identidade.
+        </p>
+        
+        <div class="animate-slide-left delay-300" style="display: flex; gap: 16px; flex-wrap: wrap; opacity:0;">
+          <a href="https://wa.me/5515997181733?text=Ol%C3%A1!%20Gostaria%20de%20fazer%20um%20or%C3%A7amento%20de%20uniformes%20personalizados." class="cta-btn" target="_blank">
+            <svg width="22" height="22" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Peça seu orçamento
+          </a>
+          <a href="https://www.instagram.com/sl.sports/" class="cta-btn-outline" target="_blank">
+            <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+            Ver Instagram
+          </a>
+        </div>
+      </div>
+
+      <!-- Right content (Logo) -->
+      <div style="flex: 0 0 auto; display: flex; justify-content: center;" class="animate-scale-in delay-200" style="opacity:0;">
+        <div class="logo-container animate-float animate-glow">
+          <img src="assets/images/logo-sl-sports.png" alt="SL Sports - Vestindo os Melhores" style="width: 200px; height: auto; object-fit: contain;">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Bar -->
+  <section style="background: linear-gradient(135deg, #dc1414, #b01010); padding: 50px 24px; position: relative; z-index: 2;">
+    <div style="max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
+      <div class="stat-card">
+        <div class="stat-number" style="-webkit-text-fill-color: #fff; background: none;">
+          <span class="counter" data-target="285">0</span>+
+        </div>
+        <div style="color: rgba(255,255,255,0.8); font-weight: 500; margin-top: 8px;">Projetos Realizados</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number" style="-webkit-text-fill-color: #fff; background: none;">
+          <span class="counter" data-target="375">0</span>+
+        </div>
+        <div style="color: rgba(255,255,255,0.8); font-weight: 500; margin-top: 8px;">Clientes Satisfeitos</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number" style="-webkit-text-fill-color: #fff; background: none;">
+          <span class="counter" data-target="5">0</span>+
+        </div>
+        <div style="color: rgba(255,255,255,0.8); font-weight: 500; margin-top: 8px;">Anos de Experiência</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number" style="-webkit-text-fill-color: #fff; background: none;">100<span style="font-size: 2rem;">%</span></div>
+        <div style="color: rgba(255,255,255,0.8); font-weight: 500; margin-top: 8px;">Personalizado</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section id="servicos" style="padding: 100px 24px; background: #0a0a0a;">
+    <div style="max-width: 1200px; margin: 0 auto;">
+      <div style="text-align: center; margin-bottom: 60px;">
+        <div class="red-line" style="margin: 0 auto 16px;"></div>
+        <h2 class="section-title">Nossos <span style="color: #dc1414;">Serviços</span></h2>
+        <p class="section-subtitle" style="margin-top: 16px;">
+          Soluções completas em uniformes e artigos esportivos personalizados
+        </p>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px;">
+        
+        <div class="service-card">
+          <div class="service-icon">👕</div>
+          <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 12px;">Camisas de Time</h3>
+          <p style="color: #888; font-size: 0.95rem; line-height: 1.6;">
+            Camisas de torcida e jogo com sublimação total. Tecido de alta qualidade, personalização completa com nome, número e escudo do seu time.
+          </p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">⚽</div>
+          <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 12px;">Uniformes Esportivos</h3>
+          <p style="color: #888; font-size: 0.95rem; line-height: 1.6;">
+            Conjuntos completos para equipes: camisas, shorts, meiões e agasalhos. Ideal para times de futebol, futsal, vôlei e outros esportes.
+          </p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">🏢</div>
+          <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 12px;">Uniformes Corporativos</h3>
+          <p style="color: #888; font-size: 0.95rem; line-height: 1.6;">
+            Uniformes profissionais para empresas. Camisetas polo, camisas sociais e camisetas com a identidade visual da sua marca.
+          </p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">🚩</div>
+          <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 12px;">Bandeiras Personalizadas</h3>
+          <p style="color: #888; font-size: 0.95rem; line-height: 1.6;">
+            Bandeiras e faixas de torcida com impressão em alta definição. Perfeitas para estádios, eventos esportivos e campeonatos.
+          </p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">🎨</div>
+          <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 12px;">Criação de Arte</h3>
+          <p style="color: #888; font-size: 0.95rem; line-height: 1.6;">
+            Desenvolvimento de design exclusivo para seu uniforme. Nossa equipe cria a arte completa, do escudo ao layout da camisa.
+          </p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">🎽</div>
+          <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 12px;">Camisas de Evento</h3>
+          <p style="color: #888; font-size: 0.95rem; line-height: 1.6;">
+            Camisetas para corridas, maratonas, torneios e eventos comemorativos. Produção em quantidade com preço especial.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Differentials Section -->
+  <section id="diferenciais" style="padding: 100px 24px; background: linear-gradient(180deg, #0a0a0a 0%, #0f0f0f 100%);">
+    <div style="max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 60px; align-items: center;">
+      
+      <div style="flex: 1; min-width: 300px;">
+        <div class="red-line" style="margin-bottom: 16px;"></div>
+        <h2 class="section-title" style="margin-bottom: 16px;">Por que escolher a <span style="color: #dc1414;">SL Sports?</span></h2>
+        <p style="color: #888; font-size: 1.05rem; line-height: 1.7; margin-bottom: 40px;">
+          Cada detalhe importa quando se trata de representar seu time, sua empresa ou sua torcida. 
+          Trabalhamos com dedicação para entregar peças que superam suas expectativas.
+        </p>
+
+        <div style="display: flex; flex-direction: column; gap: 8px;">
+          <div class="diff-item">
+            <div class="diff-number">01</div>
+            <div>
+              <h4 style="font-weight: 700; margin-bottom: 4px; font-size: 1.05rem;">Sublimação de Alta Qualidade</h4>
+              <p style="color: #888; font-size: 0.9rem; line-height: 1.6;">Cores vibrantes e duráveis que não desbotam com lavagens. Tecnologia de impressão digital de ponta.</p>
+            </div>
+          </div>
+          <div class="diff-item">
+            <div class="diff-number">02</div>
+            <div>
+              <h4 style="font-weight: 700; margin-bottom: 4px; font-size: 1.05rem;">Atendimento Personalizado</h4>
+              <p style="color: #888; font-size: 0.9rem; line-height: 1.6;">Acompanhamento direto via WhatsApp do início ao fim. Aprovação de arte antes da produção.</p>
+            </div>
+          </div>
+          <div class="diff-item">
+            <div class="diff-number">03</div>
+            <div>
+              <h4 style="font-weight: 700; margin-bottom: 4px; font-size: 1.05rem;">Tecido Premium</h4>
+              <p style="color: #888; font-size: 0.9rem; line-height: 1.6;">Materiais de primeira linha com toque macio, leveza e respirabilidade para máximo conforto em campo.</p>
+            </div>
+          </div>
+          <div class="diff-item">
+            <div class="diff-number">04</div>
+            <div>
+              <h4 style="font-weight: 700; margin-bottom: 4px; font-size: 1.05rem;">Entrega para Todo o Brasil</h4>
+              <p style="color: #888; font-size: 0.9rem; line-height: 1.6;">Enviamos para todas as regiões do Brasil com segurança e agilidade. Rastreio completo.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="flex: 1; min-width: 300px; display: flex; justify-content: center;">
+        <div style="position: relative; width: 100%; max-width: 420px;">
+          <!-- Decorative mockup grid -->
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+            <div class="gallery-item" style="aspect-ratio: 3/4; background: linear-gradient(135deg, #1a1a1a, #111);">
+              <div style="text-align: center; padding: 20px;">
+                <div style="font-size: 4rem; margin-bottom: 8px;">👕</div>
+                <p style="color: #666; font-size: 0.8rem;">Camisas de Time</p>
+              </div>
+            </div>
+            <div class="gallery-item" style="aspect-ratio: 3/4; margin-top: 40px; background: linear-gradient(135deg, #1c0000, #111);">
+              <div style="text-align: center; padding: 20px;">
+                <div style="font-size: 4rem; margin-bottom: 8px;">🚩</div>
+                <p style="color: #666; font-size: 0.8rem;">Bandeiras</p>
+              </div>
+            </div>
+            <div class="gallery-item" style="aspect-ratio: 3/4; background: linear-gradient(135deg, #1c0000, #111);">
+              <div style="text-align: center; padding: 20px;">
+                <div style="font-size: 4rem; margin-bottom: 8px;">⚽</div>
+                <p style="color: #666; font-size: 0.8rem;">Uniformes</p>
+              </div>
+            </div>
+            <div class="gallery-item" style="aspect-ratio: 3/4; margin-top: -40px; background: linear-gradient(135deg, #1a1a1a, #111);">
+              <div style="text-align: center; padding: 20px;">
+                <div style="font-size: 4rem; margin-bottom: 8px;">🎨</div>
+                <p style="color: #666; font-size: 0.8rem;">Arte Exclusiva</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process Section -->
+  <section id="processo" style="padding: 100px 24px; background: #0a0a0a;">
+    <div style="max-width: 1000px; margin: 0 auto;">
+      <div style="text-align: center; margin-bottom: 70px;">
+        <div class="red-line" style="margin: 0 auto 16px;"></div>
+        <h2 class="section-title">Como <span style="color: #dc1414;">Funciona</span></h2>
+        <p class="section-subtitle" style="margin-top: 16px;">
+          Do orçamento à entrega, um processo simples e transparente
+        </p>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px;">
+        <div class="process-step">
+          <div class="process-step-icon">💬</div>
+          <h4 style="font-weight: 700; margin-bottom: 8px; font-size: 1.1rem;">1. Contato</h4>
+          <p style="color: #888; font-size: 0.9rem; line-height: 1.6;">
+            Nos chame no WhatsApp e nos conte sua ideia. Informações sobre quantidade, modelo e personalização.
+          </p>
+        </div>
+        <div class="process-step">
+          <div class="process-step-icon">🎨</div>
+          <h4 style="font-weight: 700; margin-bottom: 8px; font-size: 1.1rem;">2. Criação da Arte</h4>
+          <p style="color: #888; font-size: 0.9rem; line-height: 1.6;">
+            Desenvolvemos o design exclusivo e enviamos para sua aprovação. Alterações ilimitadas até a aprovação final.
+          </p>
+        </div>
+        <div class="process-step">
+          <div class="process-step-icon">⚙️</div>
+          <h4 style="font-weight: 700; margin-bottom: 8px; font-size: 1.1rem;">3. Produção</h4>
+          <p style="color: #888; font-size: 0.9rem; line-height: 1.6;">
+            Arte aprovada, iniciamos a produção com os melhores materiais e tecnologia de sublimação.
+          </p>
+        </div>
+        <div class="process-step">
+          <div class="process-step-icon">📦</div>
+          <h4 style="font-weight: 700; margin-bottom: 8px; font-size: 1.1rem;">4. Entrega</h4>
+          <p style="color: #888; font-size: 0.9rem; line-height: 1.6;">
+            Produto finalizado e embalado com cuidado. Entregamos em Boituva e região ou enviamos para todo o Brasil.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section id="depoimentos" style="padding: 100px 24px; background: linear-gradient(180deg, #0a0a0a 0%, #0f0f0f 100%);">
+    <div style="max-width: 1000px; margin: 0 auto;">
+      <div style="text-align: center; margin-bottom: 60px;">
+        <div class="red-line" style="margin: 0 auto 16px;"></div>
+        <h2 class="section-title">O que dizem nossos <span style="color: #dc1414;">clientes</span></h2>
+        <p class="section-subtitle" style="margin-top: 16px;">
+          A satisfação dos nossos clientes é nosso maior troféu
+        </p>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px;">
+        <div class="testimonial-card">
+          <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px; position: relative; z-index: 1;">
+            <div style="width: 48px; height: 48px; border-radius: 50%; background: linear-gradient(135deg, #dc1414, #b01010); display: flex; align-items: center; justify-content: center; font-weight: 700;">R</div>
+            <div>
+              <div style="font-weight: 600;">Rafael S.</div>
+              <div style="color: #888; font-size: 0.85rem;">Capitão de time amador</div>
+            </div>
+          </div>
+          <p style="color: #bbb; font-size: 0.95rem; line-height: 1.7; position: relative; z-index: 1;">
+            "As camisas ficaram sensacionais! Qualidade absurda, o time inteiro adorou. Com certeza vamos pedir mais na próxima temporada."
+          </p>
+          <div style="color: #dc1414; margin-top: 12px; letter-spacing: 2px;">★★★★★</div>
+        </div>
+
+        <div class="testimonial-card">
+          <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px; position: relative; z-index: 1;">
+            <div style="width: 48px; height: 48px; border-radius: 50%; background: linear-gradient(135deg, #dc1414, #b01010); display: flex; align-items: center; justify-content: center; font-weight: 700;">M</div>
+            <div>
+              <div style="font-weight: 600;">Marcos L.</div>
+              <div style="color: #888; font-size: 0.85rem;">Organizador de torneio</div>
+            </div>
+          </div>
+          <p style="color: #bbb; font-size: 0.95rem; line-height: 1.7; position: relative; z-index: 1;">
+            "Fiz uniforme pra 8 equipes diferentes e todas as camisas vieram perfeitas. Atendimento nota 10, muito rápido no WhatsApp."
+          </p>
+          <div style="color: #dc1414; margin-top: 12px; letter-spacing: 2px;">★★★★★</div>
+        </div>
+
+        <div class="testimonial-card">
+          <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px; position: relative; z-index: 1;">
+            <div style="width: 48px; height: 48px; border-radius: 50%; background: linear-gradient(135deg, #dc1414, #b01010); display: flex; align-items: center; justify-content: center; font-weight: 700;">A</div>
+            <div>
+              <div style="font-weight: 600;">Anderson P.</div>
+              <div style="color: #888; font-size: 0.85rem;">Torcida organizada</div>
+            </div>
+          </div>
+          <p style="color: #bbb; font-size: 0.95rem; line-height: 1.7; position: relative; z-index: 1;">
+            "As bandeiras ficaram incríveis! Cores vibrantes, material resistente. Já é a terceira vez que fazemos com a SL Sports."
+          </p>
+          <div style="color: #dc1414; margin-top: 12px; letter-spacing: 2px;">★★★★★</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section id="contato" style="padding: 100px 24px; background: linear-gradient(135deg, #0a0a0a 0%, #1a0000 50%, #0a0a0a 100%); position: relative; overflow: hidden;">
+    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 600px; height: 600px; background: radial-gradient(circle, rgba(220,20,20,0.08) 0%, transparent 70%); pointer-events: none;"></div>
+    
+    <div style="max-width: 700px; margin: 0 auto; text-align: center; position: relative; z-index: 1;">
+      <div style="display: inline-block; background: rgba(220,20,20,0.1); border: 1px solid rgba(220,20,20,0.3); border-radius: 50px; padding: 8px 20px; margin-bottom: 24px;">
+        <span style="color: #dc1414; font-weight: 600; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px;">🔥 Faça seu orçamento agora</span>
+      </div>
+      
+      <h2 style="font-size: 2.8rem; font-weight: 900; line-height: 1.1; margin-bottom: 20px;">
+        Pronto para vestir seu time com <span style="color: #dc1414;">estilo?</span>
+      </h2>
+      <p style="color: #888; font-size: 1.1rem; line-height: 1.7; margin-bottom: 40px;">
+        Entre em contato agora pelo WhatsApp e solicite seu orçamento sem compromisso. 
+        Atendimento rápido e personalizado.
+      </p>
+
+      <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 40px;">
+        <a href="https://wa.me/5515997181733?text=Ol%C3%A1!%20Gostaria%20de%20fazer%20um%20or%C3%A7amento%20de%20uniformes%20personalizados." class="cta-btn" target="_blank" style="font-size: 1.2rem; padding: 18px 48px;">
+          <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Chamar no WhatsApp
+        </a>
+      </div>
+
+      <!-- Contact info -->
+      <div style="display: flex; gap: 40px; justify-content: center; flex-wrap: wrap;">
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <div style="width: 40px; height: 40px; border-radius: 10px; background: rgba(220,20,20,0.1); display: flex; align-items: center; justify-content: center;">📱</div>
+          <div style="text-align: left;">
+            <div style="color: #888; font-size: 0.8rem;">WhatsApp</div>
+            <div style="font-weight: 600; font-size: 0.95rem;">(15) 99718-1733</div>
+          </div>
+        </div>
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <div style="width: 40px; height: 40px; border-radius: 10px; background: rgba(220,20,20,0.1); display: flex; align-items: center; justify-content: center;">📍</div>
+          <div style="text-align: left;">
+            <div style="color: #888; font-size: 0.8rem;">Localização</div>
+            <div style="font-weight: 600; font-size: 0.95rem;">Boituva - SP</div>
+          </div>
+        </div>
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <div style="width: 40px; height: 40px; border-radius: 10px; background: rgba(220,20,20,0.1); display: flex; align-items: center; justify-content: center;">📸</div>
+          <div style="text-align: left;">
+            <div style="color: #888; font-size: 0.8rem;">Instagram</div>
+            <div style="font-weight: 600; font-size: 0.95rem;">@sl.sports</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer style="background: #050505; padding: 40px 24px; border-top: 1px solid rgba(255,255,255,0.05);">
+    <div style="max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;">
+      <div>
+        <span style="font-weight: 800; font-size: 1.2rem;">SL<span style="color: #dc1414;">SPORTS</span></span>
+        <p style="color: #555; font-size: 0.85rem; margin-top: 4px;">Vestindo os Melhores</p>
+      </div>
+      <div style="display: flex; gap: 20px;">
+        <a href="https://www.instagram.com/sl.sports/" target="_blank" style="width: 40px; height: 40px; border-radius: 10px; background: rgba(255,255,255,0.05); display: flex; align-items: center; justify-content: center; text-decoration: none; transition: all 0.3s ease; color: #888;" onmouseover="this.style.background='rgba(220,20,20,0.2)';this.style.color='#dc1414'" onmouseout="this.style.background='rgba(255,255,255,0.05)';this.style.color='#888'">
+          <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+        </a>
+        <a href="https://wa.me/5515997181733" target="_blank" style="width: 40px; height: 40px; border-radius: 10px; background: rgba(255,255,255,0.05); display: flex; align-items: center; justify-content: center; text-decoration: none; transition: all 0.3s ease; color: #888;" onmouseover="this.style.background='rgba(37,211,102,0.2)';this.style.color='#25D366'" onmouseout="this.style.background='rgba(255,255,255,0.05)';this.style.color='#888'">
+          <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        </a>
+      </div>
+      <div style="color: #444; font-size: 0.8rem;">
+        © 2026 SL Sports. Todos os direitos reservados.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating WhatsApp Button -->
+  <a href="https://wa.me/5515997181733?text=Ol%C3%A1!%20Gostaria%20de%20fazer%20um%20or%C3%A7amento%20de%20uniformes%20personalizados." class="whatsapp-float" target="_blank" title="Fale conosco pelo WhatsApp">
+    <svg width="32" height="32" fill="#fff" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+
+  <script>
+    // Navbar scroll effect
+    window.addEventListener('scroll', () => {
+      const navbar = document.getElementById('navbar');
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+
+    // Mobile menu toggle
+    function toggleMenu() {
+      document.getElementById('navLinks').classList.toggle('active');
+    }
+
+    // Counter animation
+    function animateCounters() {
+      const counters = document.querySelectorAll('.counter');
+      counters.forEach(counter => {
+        const target = +counter.getAttribute('data-target');
+        const duration = 2000;
+        const step = target / (duration / 16);
+        let current = 0;
+        
+        const update = () => {
+          current += step;
+          if (current < target) {
+            counter.textContent = Math.floor(current);
+            requestAnimationFrame(update);
+          } else {
+            counter.textContent = target;
+          }
+        };
+        update();
+      });
+    }
+
+    // Intersection Observer for animations
+    const observerOptions = { threshold: 0.2, rootMargin: '0px 0px -50px 0px' };
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          if (entry.target.classList.contains('counter-section')) {
+            animateCounters();
+          }
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, observerOptions);
+
+    // Observe sections
+    document.querySelectorAll('section').forEach(section => {
+      observer.observe(section);
+    });
+
+    // Trigger counter animation when stats bar is visible
+    const statsSection = document.querySelector('section:nth-of-type(2)');
+    if (statsSection) {
+      const counterObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            animateCounters();
+            counterObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.5 });
+      counterObserver.observe(statsSection);
+    }
+
+    // Smooth scroll for nav links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          // Close mobile menu
+          document.getElementById('navLinks').classList.remove('active');
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
