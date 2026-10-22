@@ -2,926 +2,1480 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SL Sports - Vestindo os Melhores</title>
-  <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <meta name="description" content="SL Sports - Uniformes esportivos personalizados, camisas de torcida e bandeiras em Boituva-SP. Sublimação digital de alta performance.">
+  <meta name="theme-color" content="#0a0a0a">
+  <title>SL Sports | Uniformes Personalizados & Artigos Esportivos</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Dancing+Script:wght@700&display=swap');
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --red-primary: #e61919;
+      --red-dark: #b80d0d;
+      --red-glow: rgba(230, 25, 25, 0.35);
+      --dark-bg: #0a0a0a;
+      --card-bg: #121212;
+      --card-hover: #181818;
+      --border-soft: rgba(255, 255, 255, 0.08);
+      --border-accent: rgba(230, 25, 25, 0.35);
+      --text-main: #ffffff;
+      --text-muted: #a3a3a3;
+      --text-sub: #737373;
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+      --radius-full: 9999px;
+      --font-main: 'Montserrat', system-ui, -apple-system, sans-serif;
+    }
 
-    html { scroll-behavior: smooth; }
+    html {
+      scroll-behavior: smooth;
+      -webkit-tap-highlight-color: transparent;
+    }
 
     body {
-      font-family: 'Montserrat', Arial, sans-serif;
-      background: #0a0a0a;
-      color: #fff;
+      font-family: var(--font-main);
+      background-color: var(--dark-bg);
+      color: var(--text-main);
       overflow-x: hidden;
+      line-height: 1.5;
     }
 
-    /* Hero gradient overlay */
-    .hero-bg {
-      background: linear-gradient(135deg, #0a0a0a 0%, #1a0000 30%, #0a0a0a 60%, #000 100%);
-      position: relative;
-      overflow: hidden;
-    }
-    .hero-bg::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      right: -30%;
-      width: 80%;
-      height: 200%;
-      background: radial-gradient(ellipse, rgba(220,20,20,0.08) 0%, transparent 70%);
-      pointer-events: none;
-    }
-    .hero-bg::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
+    /* Container base */
+    .container {
       width: 100%;
-      height: 120px;
-      background: linear-gradient(to top, #0a0a0a, transparent);
-      pointer-events: none;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 18px;
     }
 
-    /* Animated red glow pulse */
-    @keyframes glowPulse {
-      0%, 100% { box-shadow: 0 0 30px rgba(220,20,20,0.3), 0 0 60px rgba(220,20,20,0.1); }
-      50% { box-shadow: 0 0 50px rgba(220,20,20,0.5), 0 0 100px rgba(220,20,20,0.2); }
-    }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
-    }
-
-    @keyframes slideInLeft {
-      from { opacity: 0; transform: translateX(-60px); }
-      to { opacity: 1; transform: translateX(0); }
-    }
-
-    @keyframes slideInRight {
-      from { opacity: 0; transform: translateX(60px); }
-      to { opacity: 1; transform: translateX(0); }
-    }
-
-    @keyframes slideInUp {
-      from { opacity: 0; transform: translateY(40px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-
-    @keyframes scaleIn {
-      from { opacity: 0; transform: scale(0.8); }
-      to { opacity: 1; transform: scale(1); }
-    }
-
-    .animate-slide-left { animation: slideInLeft 0.8s ease-out forwards; }
-    .animate-slide-right { animation: slideInRight 0.8s ease-out forwards; }
-    .animate-slide-up { animation: slideInUp 0.8s ease-out forwards; }
-    .animate-fade-in { animation: fadeIn 1s ease-out forwards; }
-    .animate-scale-in { animation: scaleIn 0.6s ease-out forwards; }
-    .animate-float { animation: float 3s ease-in-out infinite; }
-    .animate-glow { animation: glowPulse 3s ease-in-out infinite; }
-
-    .delay-100 { animation-delay: 0.1s; }
-    .delay-200 { animation-delay: 0.2s; }
-    .delay-300 { animation-delay: 0.3s; }
-    .delay-400 { animation-delay: 0.4s; }
-    .delay-500 { animation-delay: 0.5s; }
-    .delay-600 { animation-delay: 0.6s; }
-
-    /* Red accent line */
-    .red-line {
-      width: 60px;
-      height: 4px;
-      background: linear-gradient(90deg, #dc1414, #ff4444);
-      border-radius: 2px;
-    }
-
-    /* CTA button styles */
-    .cta-btn {
-      background: linear-gradient(135deg, #dc1414 0%, #b01010 100%);
-      color: #fff;
-      padding: 16px 40px;
-      border-radius: 50px;
-      font-weight: 700;
-      font-size: 1.1rem;
-      text-decoration: none;
+    /* Utilitários tipografia */
+    .badge-tag {
       display: inline-flex;
       align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      background: rgba(230, 25, 25, 0.12);
+      border: 1px solid rgba(230, 25, 25, 0.28);
+      border-radius: var(--radius-full);
+      color: #ff4d4d;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .badge-tag svg {
+      width: 14px;
+      height: 14px;
+      stroke-width: 2.2;
+    }
+
+    .title-highlight {
+      background: linear-gradient(135deg, #ffffff 40%, #e61919 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .red-gradient-text {
+      background: linear-gradient(135deg, #ff3b3b 0%, #b80d0d 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* Botões otimizados para touch */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
       gap: 10px;
-      transition: all 0.3s ease;
+      min-height: 52px;
+      padding: 0 28px;
+      font-size: 0.95rem;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: var(--radius-full);
       border: none;
       cursor: pointer;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-    .cta-btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 10px 40px rgba(220,20,20,0.4);
-      background: linear-gradient(135deg, #ff2020 0%, #dc1414 100%);
-    }
-
-    .cta-btn-outline {
-      background: transparent;
-      color: #fff;
-      padding: 14px 36px;
-      border-radius: 50px;
-      font-weight: 600;
-      font-size: 1rem;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      transition: all 0.3s ease;
-      border: 2px solid rgba(220,20,20,0.6);
-      cursor: pointer;
-      letter-spacing: 0.5px;
-    }
-    .cta-btn-outline:hover {
-      border-color: #dc1414;
-      background: rgba(220,20,20,0.1);
-      transform: translateY(-2px);
-    }
-
-    /* Service card */
-    .service-card {
-      background: linear-gradient(145deg, #141414 0%, #0f0f0f 100%);
-      border: 1px solid rgba(255,255,255,0.06);
-      border-radius: 16px;
-      padding: 40px 30px;
-      text-align: center;
-      transition: all 0.4s ease;
       position: relative;
       overflow: hidden;
+      transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease;
+      touch-action: manipulation;
     }
-    .service-card::before {
-      content: '';
-      position: absolute;
+
+    .btn:active {
+      transform: scale(0.96);
+    }
+
+    .btn-red {
+      background: linear-gradient(135deg, #e61919 0%, #b80d0d 100%);
+      color: #ffffff;
+      box-shadow: 0 8px 24px var(--red-glow);
+    }
+
+    .btn-red:hover {
+      box-shadow: 0 12px 32px rgba(230, 25, 25, 0.55);
+    }
+
+    .btn-outline {
+      background: rgba(255, 255, 255, 0.03);
+      color: #ffffff;
+      border: 1.5px solid rgba(255, 255, 255, 0.18);
+      backdrop-filter: blur(8px);
+    }
+
+    .btn-outline:active {
+      background: rgba(230, 25, 25, 0.1);
+      border-color: var(--red-primary);
+    }
+
+    /* Header & Navigation */
+    .header {
+      position: fixed;
       top: 0;
       left: 0;
       width: 100%;
-      height: 3px;
-      background: linear-gradient(90deg, transparent, #dc1414, transparent);
-      opacity: 0;
-      transition: opacity 0.4s ease;
-    }
-    .service-card:hover {
-      transform: translateY(-8px);
-      border-color: rgba(220,20,20,0.3);
-      box-shadow: 0 20px 60px rgba(0,0,0,0.4);
-    }
-    .service-card:hover::before {
-      opacity: 1;
+      z-index: 100;
+      padding: 14px 0;
+      transition: background 0.3s ease, padding 0.3s ease, border-color 0.3s ease;
     }
 
-    .service-icon {
-      width: 70px;
-      height: 70px;
-      border-radius: 16px;
-      background: rgba(220,20,20,0.1);
+    .header.scrolled {
+      background: rgba(10, 10, 10, 0.94);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border-soft);
+    }
+
+    .header-content {
       display: flex;
       align-items: center;
-      justify-content: center;
-      margin: 0 auto 20px;
-      font-size: 32px;
+      justify-content: space-between;
     }
 
-    /* Differentials */
-    .diff-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 20px;
-      padding: 24px;
-      border-radius: 12px;
-      transition: all 0.3s ease;
-    }
-    .diff-item:hover {
-      background: rgba(220,20,20,0.04);
-    }
-    .diff-number {
-      flex-shrink: 0;
-      width: 48px;
-      height: 48px;
-      border-radius: 12px;
-      background: linear-gradient(135deg, #dc1414, #b01010);
+    .logo-text {
       display: flex;
       align-items: center;
-      justify-content: center;
-      font-weight: 800;
-      font-size: 1.2rem;
-    }
-
-    /* Stats section */
-    .stat-card {
-      text-align: center;
-      padding: 30px 20px;
-    }
-    .stat-number {
-      font-size: 3rem;
+      gap: 4px;
+      font-size: 1.35rem;
       font-weight: 900;
-      background: linear-gradient(135deg, #dc1414, #ff6644);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      line-height: 1;
-    }
-
-    /* Testimonial card */
-    .testimonial-card {
-      background: linear-gradient(145deg, #141414 0%, #0f0f0f 100%);
-      border: 1px solid rgba(255,255,255,0.06);
-      border-radius: 16px;
-      padding: 30px;
-      position: relative;
-    }
-    .testimonial-card::before {
-      content: '"';
-      position: absolute;
-      top: 10px;
-      left: 20px;
-      font-size: 5rem;
-      color: rgba(220,20,20,0.15);
-      font-family: Georgia, serif;
-      line-height: 1;
-    }
-
-    /* Process step */
-    .process-step {
-      text-align: center;
-      position: relative;
-    }
-    .process-step-icon {
-      width: 80px;
-      height: 80px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, rgba(220,20,20,0.15), rgba(220,20,20,0.05));
-      border: 2px solid rgba(220,20,20,0.3);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 20px;
-      font-size: 32px;
-      transition: all 0.3s ease;
-    }
-    .process-step:hover .process-step-icon {
-      background: linear-gradient(135deg, #dc1414, #b01010);
-      border-color: #dc1414;
-      transform: scale(1.1);
-    }
-
-    /* Gallery grid */
-    .gallery-item {
-      border-radius: 12px;
-      overflow: hidden;
-      background: #141414;
-      aspect-ratio: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border: 1px solid rgba(255,255,255,0.06);
-      transition: all 0.4s ease;
-      position: relative;
-    }
-    .gallery-item:hover {
-      border-color: rgba(220,20,20,0.3);
-      transform: scale(1.03);
-    }
-    .gallery-item::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to top, rgba(220,20,20,0.1), transparent);
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
-    .gallery-item:hover::after {
-      opacity: 1;
-    }
-
-    /* Floating WhatsApp button */
-    .whatsapp-float {
-      position: fixed;
-      bottom: 24px;
-      right: 24px;
-      width: 60px;
-      height: 60px;
-      background: #25D366;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 4px 20px rgba(37,211,102,0.4);
-      z-index: 1000;
-      transition: all 0.3s ease;
+      color: #ffffff;
       text-decoration: none;
-    }
-    .whatsapp-float:hover {
-      transform: scale(1.1);
-      box-shadow: 0 6px 30px rgba(37,211,102,0.6);
+      letter-spacing: -0.5px;
     }
 
-    /* Section title styling */
-    .section-title {
-      font-size: 2.5rem;
-      font-weight: 800;
-      letter-spacing: -0.5px;
-      line-height: 1.2;
+    .logo-text span {
+      color: var(--red-primary);
     }
-    .section-subtitle {
-      color: #888;
-      font-size: 1.1rem;
-      max-width: 600px;
+
+    .nav-links-desktop {
+      display: none;
+    }
+
+    .menu-trigger {
+      width: 44px;
+      height: 44px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      z-index: 102;
+    }
+
+    .menu-trigger .line {
+      width: 24px;
+      height: 2.5px;
+      background: #ffffff;
+      border-radius: 4px;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    .menu-trigger.active .line:nth-child(1) {
+      transform: translateY(7.5px) rotate(45deg);
+    }
+    .menu-trigger.active .line:nth-child(2) {
+      opacity: 0;
+      transform: scaleX(0);
+    }
+    .menu-trigger.active .line:nth-child(3) {
+      transform: translateY(-7.5px) rotate(-45deg);
+    }
+
+    /* Overlay Mobile Menu */
+    .mobile-menu {
+      position: fixed;
+      inset: 0;
+      background: rgba(10, 10, 10, 0.98);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      z-index: 101;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 24px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.35s ease;
+    }
+
+    .mobile-menu.active {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .mobile-menu a {
+      color: var(--text-main);
+      font-size: 1.35rem;
+      font-weight: 700;
+      text-decoration: none;
+      letter-spacing: 0.5px;
+      transition: color 0.2s ease, transform 0.2s ease;
+    }
+
+    .mobile-menu a:active {
+      color: var(--red-primary);
+      transform: scale(1.05);
+    }
+
+    /* Hero Section */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      min-height: 100dvh;
+      display: flex;
+      align-items: center;
+      padding: 100px 0 60px;
+      overflow: hidden;
+      background: radial-gradient(circle at 50% 20%, rgba(230, 25, 25, 0.12) 0%, transparent 60%);
+    }
+
+    .hero-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 32px;
+      width: 100%;
+    }
+
+    /* Logo Showcase Pulse */
+    .logo-hero-container {
+      position: relative;
+      width: 170px;
+      height: 170px;
       margin: 0 auto;
     }
 
-    /* Navbar */
-    .navbar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      z-index: 999;
-      padding: 16px 0;
-      transition: all 0.3s ease;
-      background: transparent;
-    }
-    .navbar.scrolled {
-      background: rgba(10,10,10,0.95);
-      backdrop-filter: blur(10px);
-      padding: 10px 0;
-      border-bottom: 1px solid rgba(255,255,255,0.05);
-    }
-
-    /* Counter animation */
-    .counter { display: inline-block; }
-
-    /* Mobile hamburger */
-    .hamburger { display: none; cursor: pointer; }
-    .hamburger span {
-      display: block;
-      width: 28px;
-      height: 3px;
-      background: #fff;
-      margin: 5px 0;
-      border-radius: 2px;
-      transition: all 0.3s ease;
-    }
-
-    /* Responsive */
-    @media (max-width: 768px) {
-      .section-title { font-size: 1.8rem; }
-      .stat-number { font-size: 2.2rem; }
-      .hamburger { display: block; }
-      .nav-links { 
-        display: none !important;
-        position: absolute;
-        top: 60px;
-        left: 0;
-        width: 100%;
-        background: rgba(10,10,10,0.98);
-        flex-direction: column;
-        padding: 20px;
-        gap: 15px;
-        border-bottom: 1px solid rgba(255,255,255,0.1);
-      }
-      .nav-links.active { display: flex !important; }
-      .cta-btn { padding: 14px 30px; font-size: 1rem; }
-    }
-
-    /* Scrollbar */
-    ::-webkit-scrollbar { width: 8px; }
-    ::-webkit-scrollbar-track { background: #0a0a0a; }
-    ::-webkit-scrollbar-thumb { background: #dc1414; border-radius: 4px; }
-    ::-webkit-scrollbar-thumb:hover { background: #ff2020; }
-
-    /* Logo container */
-    .logo-container {
-      width: 260px;
-      height: 260px;
+    .logo-halo {
+      position: absolute;
+      inset: -12px;
       border-radius: 50%;
-      background: radial-gradient(circle, rgba(255,255,255,0.95) 0%, rgba(240,240,240,0.9) 70%, rgba(200,200,200,0.4) 100%);
+      background: radial-gradient(circle, rgba(230, 25, 25, 0.35) 0%, transparent 70%);
+      animation: pulseGlow 3s infinite ease-in-out;
+    }
+
+    .logo-circle-wrapper {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background: radial-gradient(circle, #ffffff 15%, #eaeaea 80%, #cccccc 100%);
+      padding: 18px;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 30px;
-      position: relative;
+      border: 3px solid rgba(230, 25, 25, 0.7);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+      animation: gentleFloat 4s ease-in-out infinite;
     }
-    .logo-container::before {
+
+    .logo-circle-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    @keyframes pulseGlow {
+      0%, 100% { transform: scale(0.95); opacity: 0.5; }
+      50% { transform: scale(1.15); opacity: 0.9; }
+    }
+
+    @keyframes gentleFloat {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-7px); }
+    }
+
+    .hero-title {
+      font-size: 2.15rem;
+      font-weight: 900;
+      line-height: 1.15;
+      letter-spacing: -0.5px;
+    }
+
+    .hero-subtitle {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    .hero-btn-group {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      width: 100%;
+      max-width: 320px;
+    }
+
+    /* Stats Strip */
+    .stats-section {
+      background: linear-gradient(135deg, #b80d0d 0%, #7a0808 100%);
+      padding: 34px 0;
+      box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px 14px;
+      text-align: center;
+    }
+
+    .stat-card {
+      padding: 6px;
+    }
+
+    .stat-num {
+      font-size: 2.2rem;
+      font-weight: 900;
+      color: #ffffff;
+      line-height: 1;
+      letter-spacing: -0.5px;
+    }
+
+    .stat-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.85);
+      margin-top: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* Seções genéricas */
+    .section-spacing {
+      padding: 68px 0;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 38px;
+    }
+
+    .section-title {
+      font-size: 1.85rem;
+      font-weight: 900;
+      letter-spacing: -0.5px;
+      line-height: 1.2;
+      margin-top: 10px;
+    }
+
+    .section-desc {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-top: 8px;
+      max-width: 520px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* Cards de Serviços (Mobile Optimized) */
+    .services-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+
+    .service-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-soft);
+      border-radius: var(--radius-md);
+      padding: 22px 18px;
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .service-card:active {
+      transform: scale(0.98);
+      border-color: var(--border-accent);
+      background: var(--card-hover);
+    }
+
+    .icon-wrapper {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: rgba(230, 25, 25, 0.1);
+      border: 1px solid rgba(230, 25, 25, 0.22);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .icon-wrapper svg {
+      width: 22px;
+      height: 22px;
+      color: var(--red-primary);
+      stroke-width: 2;
+    }
+
+    .service-title {
+      font-size: 1.05rem;
+      font-weight: 800;
+      margin-bottom: 4px;
+    }
+
+    .service-text {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* Diferenciais */
+    .diff-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .diff-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-soft);
+      border-radius: var(--radius-md);
+      padding: 18px 16px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .diff-pill-num {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, var(--red-primary), var(--red-dark));
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      font-size: 0.9rem;
+      flex-shrink: 0;
+    }
+
+    .diff-info h4 {
+      font-size: 0.95rem;
+      font-weight: 800;
+      margin-bottom: 2px;
+    }
+
+    .diff-info p {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    /* Como Funciona (Timeline vertical mobile) */
+    .timeline {
+      position: relative;
+      padding-left: 32px;
+      margin: 10px 0;
+    }
+
+    .timeline::before {
       content: '';
       position: absolute;
-      inset: -3px;
+      left: 14px;
+      top: 10px;
+      bottom: 20px;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--red-primary), rgba(230, 25, 25, 0.1));
+    }
+
+    .timeline-step {
+      position: relative;
+      padding-bottom: 28px;
+    }
+
+    .timeline-step:last-child {
+      padding-bottom: 0;
+    }
+
+    .timeline-node {
+      position: absolute;
+      left: -32px;
+      top: 0;
+      width: 30px;
+      height: 30px;
       border-radius: 50%;
-      background: linear-gradient(135deg, #dc1414, #333, #dc1414);
-      z-index: -1;
+      background: #0a0a0a;
+      border: 2px solid var(--red-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2;
+    }
+
+    .timeline-node svg {
+      width: 14px;
+      height: 14px;
+      color: var(--red-primary);
+      stroke-width: 2.2;
+    }
+
+    .timeline-content h4 {
+      font-size: 1rem;
+      font-weight: 800;
+      margin-bottom: 4px;
+    }
+
+    .timeline-content p {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* Depoimentos Touch Carousel */
+    .testimonials-slider {
+      display: flex;
+      gap: 14px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      padding: 6px 4px 18px;
+      scrollbar-width: none;
+    }
+
+    .testimonials-slider::-webkit-scrollbar {
+      display: none;
+    }
+
+    .test-card {
+      flex: 0 0 calc(100% - 30px);
+      scroll-snap-align: center;
+      background: var(--card-bg);
+      border: 1px solid var(--border-soft);
+      border-radius: var(--radius-md);
+      padding: 22px 18px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .test-author {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .test-avatar {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--red-primary), var(--red-dark));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 0.95rem;
+      color: #fff;
+    }
+
+    .test-name {
+      font-size: 0.9rem;
+      font-weight: 800;
+    }
+
+    .test-role {
+      font-size: 0.75rem;
+      color: var(--text-sub);
+    }
+
+    .test-stars {
+      display: flex;
+      gap: 3px;
+      margin-top: 12px;
+    }
+
+    .test-stars svg {
+      width: 15px;
+      height: 15px;
+      fill: #ffb800;
+      color: #ffb800;
+    }
+
+    .test-text {
+      font-size: 0.85rem;
+      color: #d1d1d1;
+      line-height: 1.55;
+      font-style: italic;
+    }
+
+    .dots-indicator {
+      display: flex;
+      justify-content: center;
+      gap: 6px;
+      margin-top: 10px;
+    }
+
+    .dot {
+      width: 7px;
+      height: 7px;
+      border-radius: var(--radius-full);
+      background: rgba(255, 255, 255, 0.2);
+      transition: all 0.3s ease;
+    }
+
+    .dot.active {
+      width: 22px;
+      background: var(--red-primary);
+    }
+
+    /* CTA Final */
+    .cta-final {
+      background: radial-gradient(circle at 50% 50%, rgba(230, 25, 25, 0.15) 0%, transparent 80%);
+      padding: 60px 0 110px;
+      text-align: center;
+    }
+
+    .contact-links-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+      margin-top: 30px;
+      max-width: 400px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .contact-item-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-soft);
+      border-radius: var(--radius-sm);
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-decoration: none;
+      color: var(--text-main);
+      transition: border-color 0.2s ease;
+    }
+
+    .contact-item-card:active {
+      border-color: var(--border-accent);
+    }
+
+    .contact-item-card .contact-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 8px;
+      background: rgba(230, 25, 25, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--red-primary);
+      flex-shrink: 0;
+    }
+
+    .contact-item-card .contact-icon svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    .contact-item-card .contact-title {
+      font-size: 0.72rem;
+      color: var(--text-sub);
+      text-transform: uppercase;
+      font-weight: 600;
+      text-align: left;
+    }
+
+    .contact-item-card .contact-val {
+      font-size: 0.88rem;
+      font-weight: 800;
+      text-align: left;
+    }
+
+    /* Rodapé */
+    .footer {
+      border-top: 1px solid var(--border-soft);
+      padding: 24px 0 90px;
+      text-align: center;
+      font-size: 0.75rem;
+      color: var(--text-sub);
+    }
+
+    /* Barra Fixa Flutuante no Mobile (Bottom Action Bar) */
+    .mobile-sticky-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(10, 10, 10, 0.94);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-top: 1px solid var(--border-soft);
+      padding: 10px 16px calc(10px + env(safe-area-inset-bottom, 0px));
+      z-index: 99;
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      transform: translateY(100%);
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .mobile-sticky-bar.visible {
+      transform: translateY(0);
+    }
+
+    .mobile-sticky-bar .btn-sticky-cta {
+      flex: 1;
+      min-height: 48px;
+      padding: 0 16px;
+      font-size: 0.85rem;
+    }
+
+    .btn-sticky-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: var(--radius-full);
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+
+    .btn-sticky-icon svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    /* Scroll Reveal Classes */
+    .fade-in-scroll {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform;
+    }
+
+    .fade-in-scroll.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Responsividade Desktop / Tablet */
+    @media (min-width: 768px) {
+      .menu-trigger { display: none; }
+      .nav-links-desktop {
+        display: flex;
+        align-items: center;
+        gap: 26px;
+      }
+      .nav-links-desktop a {
+        color: var(--text-muted);
+        text-decoration: none;
+        font-size: 0.88rem;
+        font-weight: 600;
+        transition: color 0.2s ease;
+      }
+      .nav-links-desktop a:hover {
+        color: var(--red-primary);
+      }
+      .nav-links-desktop .btn-sm {
+        min-height: 42px;
+        padding: 0 20px;
+        font-size: 0.8rem;
+      }
+
+      .hero-wrapper {
+        flex-direction: row-reverse;
+        justify-content: space-between;
+        text-align: left;
+        gap: 50px;
+      }
+      .logo-hero-container {
+        width: 240px;
+        height: 240px;
+      }
+      .hero-title {
+        font-size: 3.2rem;
+      }
+      .hero-subtitle {
+        margin: 0;
+      }
+      .hero-btn-group {
+        flex-direction: row;
+        max-width: none;
+      }
+
+      .stats-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+      .stat-num {
+        font-size: 2.8rem;
+      }
+
+      .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+      }
+      .service-card {
+        padding: 26px;
+      }
+
+      .timeline {
+        padding-left: 0;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+      }
+      .timeline::before { display: none; }
+      .timeline-step {
+        text-align: center;
+        padding-bottom: 0;
+      }
+      .timeline-node {
+        position: relative;
+        left: auto;
+        top: auto;
+        margin: 0 auto 16px;
+        width: 48px;
+        height: 48px;
+      }
+      .timeline-node svg {
+        width: 20px;
+        height: 20px;
+      }
+
+      .test-card {
+        flex: 0 0 calc(33.333% - 12px);
+      }
+
+      .contact-links-grid {
+        grid-template-columns: repeat(3, 1fr);
+        max-width: 800px;
+      }
+
+      .mobile-sticky-bar {
+        display: none !important;
+      }
+      .footer {
+        padding-bottom: 30px;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .services-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      .hero-title {
+        font-size: 3.8rem;
+      }
     }
   </style>
 </head>
 <body>
 
-  <!-- Navbar -->
-  <nav class="navbar" id="navbar">
-    <div style="max-width: 1200px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between;">
-      <a href="#" style="display: flex; align-items: center; gap: 10px; text-decoration: none; color: #fff;">
-        <span style="font-weight: 800; font-size: 1.4rem;">SL<span style="color: #dc1414;">SPORTS</span></span>
-      </a>
-      <div class="nav-links" id="navLinks" style="display: flex; align-items: center; gap: 30px;">
-        <a href="#servicos" style="color: #ccc; text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.3s;" onmouseover="this.style.color='#dc1414'" onmouseout="this.style.color='#ccc'">Serviços</a>
-        <a href="#diferenciais" style="color: #ccc; text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.3s;" onmouseover="this.style.color='#dc1414'" onmouseout="this.style.color='#ccc'">Diferenciais</a>
-        <a href="#processo" style="color: #ccc; text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.3s;" onmouseover="this.style.color='#dc1414'" onmouseout="this.style.color='#ccc'">Como Funciona</a>
-        <a href="#depoimentos" style="color: #ccc; text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.3s;" onmouseover="this.style.color='#dc1414'" onmouseout="this.style.color='#ccc'">Depoimentos</a>
-        <a href="#contato" class="cta-btn" style="padding: 10px 24px; font-size: 0.85rem;">Orçamento</a>
-      </div>
-      <div class="hamburger" id="hamburger" onclick="toggleMenu()">
-        <span></span><span></span><span></span>
-      </div>
+  <!-- Header -->
+  <header class="header" id="header">
+    <div class="container header-content">
+      <a href="#" class="logo-text">SL<span>SPORTS</span></a>
+
+      <nav class="nav-links-desktop">
+        <a href="#servicos">Serviços</a>
+        <a href="#diferenciais">Diferenciais</a>
+        <a href="#processo">Processo</a>
+        <a href="#depoimentos">Avaliações</a>
+        <a href="https://wa.me/5515997181733?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20um%20or%C3%A7amento." target="_blank" class="btn btn-red btn-sm">Orçamento</a>
+      </nav>
+
+      <button class="menu-trigger" id="menuToggle" aria-label="Abrir menu de navegação">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </button>
     </div>
-  </nav>
+  </header>
+
+  <!-- Mobile Menu Drawer -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#servicos" onclick="closeNav()">Serviços</a>
+    <a href="#diferenciais" onclick="closeNav()">Diferenciais</a>
+    <a href="#processo" onclick="closeNav()">Como Funciona</a>
+    <a href="#depoimentos" onclick="closeNav()">Avaliações</a>
+    <a href="https://wa.me/5515997181733?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20um%20or%C3%A7amento." target="_blank" class="btn btn-red" style="width: 240px; margin-top: 10px;" onclick="closeNav()">Pedir Orçamento</a>
+  </div>
 
   <!-- Hero Section -->
-  <section class="hero-bg" style="min-height: 100vh; display: flex; align-items: center; padding: 120px 24px 80px;">
-    <div style="max-width: 1200px; margin: 0 auto; width: 100%; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 60px;">
-      
-      <!-- Left content -->
-      <div style="flex: 1; min-width: 300px;">
-        <div class="animate-slide-left" style="opacity:0;">
-          <div style="display: inline-block; background: rgba(220,20,20,0.1); border: 1px solid rgba(220,20,20,0.3); border-radius: 50px; padding: 8px 20px; margin-bottom: 24px;">
-            <span style="color: #dc1414; font-weight: 600; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px;">📍 Boituva - SP</span>
+  <section class="hero">
+    <div class="container">
+      <div class="hero-wrapper">
+        
+        <!-- Logo Hero -->
+        <div class="logo-hero-container">
+          <div class="logo-halo"></div>
+          <div class="logo-circle-wrapper">
+            <img src="assets/images/logo-sl-sports.png" alt="SL Sports - Vestindo os Melhores">
           </div>
         </div>
-        
-        <h1 class="animate-slide-left delay-100" style="font-size: 3.5rem; font-weight: 900; line-height: 1.1; margin-bottom: 24px; opacity:0;">
-          Uniforme de<br>
-          <span style="background: linear-gradient(135deg, #dc1414, #ff4444); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Alta Performance</span><br>
-          para seu time
-        </h1>
-        
-        <p class="animate-slide-left delay-200" style="color: #999; font-size: 1.15rem; line-height: 1.7; margin-bottom: 40px; max-width: 500px; opacity:0;">
-          Camisas personalizadas, uniformes esportivos e bandeiras com qualidade profissional. 
-          Da arte ao produto final, cada peça feita sob medida para representar sua identidade.
-        </p>
-        
-        <div class="animate-slide-left delay-300" style="display: flex; gap: 16px; flex-wrap: wrap; opacity:0;">
-          <a href="https://wa.me/5515997181733?text=Ol%C3%A1!%20Gostaria%20de%20fazer%20um%20or%C3%A7amento%20de%20uniformes%20personalizados." class="cta-btn" target="_blank">
-            <svg width="22" height="22" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-            Peça seu orçamento
-          </a>
-          <a href="https://www.instagram.com/sl.sports/" class="cta-btn-outline" target="_blank">
-            <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
-            Ver Instagram
-          </a>
-        </div>
-      </div>
 
-      <!-- Right content (Logo) -->
-      <div style="flex: 0 0 auto; display: flex; justify-content: center;" class="animate-scale-in delay-200" style="opacity:0;">
-        <div class="logo-container animate-float animate-glow">
-          <img src="assets/images/logo-sl-sports.png" alt="SL Sports - Vestindo os Melhores" style="width: 200px; height: auto; object-fit: contain;">
+        <!-- Textos Hero -->
+        <div class="hero-text-block">
+          <div class="badge-tag">
+            <!-- SVG: Pin de Localização -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 2a8 8 0 0 0-8 8c0 5.25 8 12 8 12s8-6.75 8-12a8 8 0 0 0-8-8z"/><circle cx="12" cy="10" r="3"/></svg>
+            Boituva - SP
+          </div>
+
+          <h1 class="hero-title" style="margin-top: 14px;">
+            Uniformes de<br>
+            <span class="red-gradient-text">Alta Performance</span><br>
+            para o seu time
+          </h1>
+
+          <p class="hero-subtitle" style="margin-top: 14px;">
+            Camisas esportivas personalizadas, kits de torcida e bandeiras em sublimação de alta definição. Peças sob medida para quem busca qualidade profissional.
+          </p>
+
+          <div class="hero-btn-group" style="margin-top: 26px;">
+            <a href="https://wa.me/5515997181733?text=Ol%C3%A1!%20Gostaria%20de%20fazer%20um%20or%C3%A7amento%20de%20uniformes%20personalizados." target="_blank" class="btn btn-red">
+              <!-- SVG: WhatsApp -->
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              Solicitar Orçamento
+            </a>
+
+            <a href="https://www.instagram.com/sl.sports/" target="_blank" class="btn btn-outline">
+              <!-- SVG: Instagram -->
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+              Ver Portfólio
+            </a>
+          </div>
         </div>
+
       </div>
     </div>
   </section>
 
   <!-- Stats Bar -->
-  <section style="background: linear-gradient(135deg, #dc1414, #b01010); padding: 50px 24px; position: relative; z-index: 2;">
-    <div style="max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
-      <div class="stat-card">
-        <div class="stat-number" style="-webkit-text-fill-color: #fff; background: none;">
-          <span class="counter" data-target="285">0</span>+
+  <section class="stats-section">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-card fade-in-scroll">
+          <div class="stat-num"><span class="counter" data-target="285">0</span>+</div>
+          <div class="stat-label">Modelos Criados</div>
         </div>
-        <div style="color: rgba(255,255,255,0.8); font-weight: 500; margin-top: 8px;">Projetos Realizados</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-number" style="-webkit-text-fill-color: #fff; background: none;">
-          <span class="counter" data-target="375">0</span>+
+        <div class="stat-card fade-in-scroll">
+          <div class="stat-num"><span class="counter" data-target="375">0</span>+</div>
+          <div class="stat-label">Clientes Atendidos</div>
         </div>
-        <div style="color: rgba(255,255,255,0.8); font-weight: 500; margin-top: 8px;">Clientes Satisfeitos</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-number" style="-webkit-text-fill-color: #fff; background: none;">
-          <span class="counter" data-target="5">0</span>+
+        <div class="stat-card fade-in-scroll">
+          <div class="stat-num">5+</div>
+          <div class="stat-label">Anos de Estrada</div>
         </div>
-        <div style="color: rgba(255,255,255,0.8); font-weight: 500; margin-top: 8px;">Anos de Experiência</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-number" style="-webkit-text-fill-color: #fff; background: none;">100<span style="font-size: 2rem;">%</span></div>
-        <div style="color: rgba(255,255,255,0.8); font-weight: 500; margin-top: 8px;">Personalizado</div>
+        <div class="stat-card fade-in-scroll">
+          <div class="stat-num">100%</div>
+          <div class="stat-label">Exclusivo</div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Services Section -->
-  <section id="servicos" style="padding: 100px 24px; background: #0a0a0a;">
-    <div style="max-width: 1200px; margin: 0 auto;">
-      <div style="text-align: center; margin-bottom: 60px;">
-        <div class="red-line" style="margin: 0 auto 16px;"></div>
-        <h2 class="section-title">Nossos <span style="color: #dc1414;">Serviços</span></h2>
-        <p class="section-subtitle" style="margin-top: 16px;">
-          Soluções completas em uniformes e artigos esportivos personalizados
-        </p>
+  <!-- Serviços -->
+  <section class="section-spacing" id="servicos">
+    <div class="container">
+      <div class="section-header fade-in-scroll">
+        <div class="badge-tag">
+          <!-- SVG: Camiseta -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20.38 3.46L16 2a4 4 0 0 0-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.47a1 1 0 0 0 .99.84H6v10a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.47a2 2 0 0 0-1.34-2.23z"/></svg>
+          Especialidades
+        </div>
+        <h2 class="section-title">O que fazemos por você</h2>
+        <p class="section-desc">Linha completa de confecção esportiva e promocional com acabamento profissional.</p>
       </div>
 
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px;">
+      <div class="services-grid">
         
-        <div class="service-card">
-          <div class="service-icon">👕</div>
-          <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 12px;">Camisas de Time</h3>
-          <p style="color: #888; font-size: 0.95rem; line-height: 1.6;">
-            Camisas de torcida e jogo com sublimação total. Tecido de alta qualidade, personalização completa com nome, número e escudo do seu time.
-          </p>
+        <!-- Card 1 -->
+        <div class="service-card fade-in-scroll">
+          <div class="icon-wrapper">
+            <!-- SVG: Camisa de time -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20.38 3.46L16 2a4 4 0 0 0-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.47a1 1 0 0 0 .99.84H6v10a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.47a2 2 0 0 0-1.34-2.23z"/></svg>
+          </div>
+          <div>
+            <h3 class="service-title">Camisas de Time & Jogo</h3>
+            <p class="service-text">Sublimação total com toque zero. Personalização completa de nome, numeração, patrocinadores e escudo.</p>
+          </div>
         </div>
 
-        <div class="service-card">
-          <div class="service-icon">⚽</div>
-          <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 12px;">Uniformes Esportivos</h3>
-          <p style="color: #888; font-size: 0.95rem; line-height: 1.6;">
-            Conjuntos completos para equipes: camisas, shorts, meiões e agasalhos. Ideal para times de futebol, futsal, vôlei e outros esportes.
-          </p>
+        <!-- Card 2 -->
+        <div class="service-card fade-in-scroll">
+          <div class="icon-wrapper">
+            <!-- SVG: Troféu -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2z"/></svg>
+          </div>
+          <div>
+            <h3 class="service-title">Kits Completos</h3>
+            <p class="service-text">Camisa, calção e meião combinando para times amadores, semi-profissionais e campeonatos municipais.</p>
+          </div>
         </div>
 
-        <div class="service-card">
-          <div class="service-icon">🏢</div>
-          <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 12px;">Uniformes Corporativos</h3>
-          <p style="color: #888; font-size: 0.95rem; line-height: 1.6;">
-            Uniformes profissionais para empresas. Camisetas polo, camisas sociais e camisetas com a identidade visual da sua marca.
-          </p>
+        <!-- Card 3 -->
+        <div class="service-card fade-in-scroll">
+          <div class="icon-wrapper">
+            <!-- SVG: Bandeira -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg>
+          </div>
+          <div>
+            <h3 class="service-title">Bandeiras & Faixas de Torcida</h3>
+            <p class="service-text">Tecido resistente para estádios e arquibancadas, com cores ultra vibrantes que resistem ao sol e chuva.</p>
+          </div>
         </div>
 
-        <div class="service-card">
-          <div class="service-icon">🚩</div>
-          <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 12px;">Bandeiras Personalizadas</h3>
-          <p style="color: #888; font-size: 0.95rem; line-height: 1.6;">
-            Bandeiras e faixas de torcida com impressão em alta definição. Perfeitas para estádios, eventos esportivos e campeonatos.
-          </p>
+        <!-- Card 4 -->
+        <div class="service-card fade-in-scroll">
+          <div class="icon-wrapper">
+            <!-- SVG: Maleta / Uniforme corporativo -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>
+          </div>
+          <div>
+            <h3 class="service-title">Uniformes Empresariais</h3>
+            <p class="service-text">Camisetas em malha fria ou algodão premium para equipes comerciais, eventos e padronização da sua marca.</p>
+          </div>
         </div>
 
-        <div class="service-card">
-          <div class="service-icon">🎨</div>
-          <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 12px;">Criação de Arte</h3>
-          <p style="color: #888; font-size: 0.95rem; line-height: 1.6;">
-            Desenvolvimento de design exclusivo para seu uniforme. Nossa equipe cria a arte completa, do escudo ao layout da camisa.
-          </p>
+        <!-- Card 5 -->
+        <div class="service-card fade-in-scroll">
+          <div class="icon-wrapper">
+            <!-- SVG: Paleta de Arte -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="13.5" cy="6.5" r=".5" fill="currentColor"/><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"/><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"/><circle cx="6.5" cy="12.5" r=".5" fill="currentColor"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></svg>
+          </div>
+          <div>
+            <h3 class="service-title">Design & Criação Exclusiva</h3>
+            <p class="service-text">Não tem a arte pronta? Desenvolvemos mockups realistas 3D do uniforme antes de você fechar a produção.</p>
+          </div>
         </div>
 
-        <div class="service-card">
-          <div class="service-icon">🎽</div>
-          <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 12px;">Camisas de Evento</h3>
-          <p style="color: #888; font-size: 0.95rem; line-height: 1.6;">
-            Camisetas para corridas, maratonas, torneios e eventos comemorativos. Produção em quantidade com preço especial.
-          </p>
+        <!-- Card 6 -->
+        <div class="service-card fade-in-scroll">
+          <div class="icon-wrapper">
+            <!-- SVG: Raio / Velocidade -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          </div>
+          <div>
+            <h3 class="service-title">Eventos & Torneios</h3>
+            <p class="service-text">Produção ágil de camisas para corridas de rua, festivais esportivos, cavalgadas e comemorações.</p>
+          </div>
         </div>
 
       </div>
     </div>
   </section>
 
-  <!-- Differentials Section -->
-  <section id="diferenciais" style="padding: 100px 24px; background: linear-gradient(180deg, #0a0a0a 0%, #0f0f0f 100%);">
-    <div style="max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 60px; align-items: center;">
-      
-      <div style="flex: 1; min-width: 300px;">
-        <div class="red-line" style="margin-bottom: 16px;"></div>
-        <h2 class="section-title" style="margin-bottom: 16px;">Por que escolher a <span style="color: #dc1414;">SL Sports?</span></h2>
-        <p style="color: #888; font-size: 1.05rem; line-height: 1.7; margin-bottom: 40px;">
-          Cada detalhe importa quando se trata de representar seu time, sua empresa ou sua torcida. 
-          Trabalhamos com dedicação para entregar peças que superam suas expectativas.
-        </p>
+  <!-- Diferenciais -->
+  <section class="section-spacing" id="diferenciais" style="background: #0e0e0e;">
+    <div class="container">
+      <div class="section-header fade-in-scroll">
+        <div class="badge-tag">
+          <!-- SVG: Escudo / Confiança -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          Por que a SL Sports
+        </div>
+        <h2 class="section-title">O padrão que seu time merece</h2>
+      </div>
 
-        <div style="display: flex; flex-direction: column; gap: 8px;">
-          <div class="diff-item">
-            <div class="diff-number">01</div>
-            <div>
-              <h4 style="font-weight: 700; margin-bottom: 4px; font-size: 1.05rem;">Sublimação de Alta Qualidade</h4>
-              <p style="color: #888; font-size: 0.9rem; line-height: 1.6;">Cores vibrantes e duráveis que não desbotam com lavagens. Tecnologia de impressão digital de ponta.</p>
-            </div>
+      <div class="diff-list">
+        <div class="diff-card fade-in-scroll">
+          <div class="diff-pill-num">01</div>
+          <div class="diff-info">
+            <h4>Sublimação Digital HD</h4>
+            <p>Tintas de alta solidez que não racham nem desbotam mesmo com dezenas de lavagens.</p>
           </div>
-          <div class="diff-item">
-            <div class="diff-number">02</div>
-            <div>
-              <h4 style="font-weight: 700; margin-bottom: 4px; font-size: 1.05rem;">Atendimento Personalizado</h4>
-              <p style="color: #888; font-size: 0.9rem; line-height: 1.6;">Acompanhamento direto via WhatsApp do início ao fim. Aprovação de arte antes da produção.</p>
-            </div>
+        </div>
+
+        <div class="diff-card fade-in-scroll">
+          <div class="diff-pill-num">02</div>
+          <div class="diff-info">
+            <h4>Tecido Dry Fit Tecnológico</h4>
+            <p>Leveza, absorção de suor e secagem ultra rápida para máximo rendimento dos atletas.</p>
           </div>
-          <div class="diff-item">
-            <div class="diff-number">03</div>
-            <div>
-              <h4 style="font-weight: 700; margin-bottom: 4px; font-size: 1.05rem;">Tecido Premium</h4>
-              <p style="color: #888; font-size: 0.9rem; line-height: 1.6;">Materiais de primeira linha com toque macio, leveza e respirabilidade para máximo conforto em campo.</p>
-            </div>
+        </div>
+
+        <div class="diff-card fade-in-scroll">
+          <div class="diff-pill-num">03</div>
+          <div class="diff-info">
+            <h4>Atendimento Direto & Ágil</h4>
+            <p>Sem burocracia. Você fala diretamente com quem desenha e produz pelo WhatsApp.</p>
           </div>
-          <div class="diff-item">
-            <div class="diff-number">04</div>
-            <div>
-              <h4 style="font-weight: 700; margin-bottom: 4px; font-size: 1.05rem;">Entrega para Todo o Brasil</h4>
-              <p style="color: #888; font-size: 0.9rem; line-height: 1.6;">Enviamos para todas as regiões do Brasil com segurança e agilidade. Rastreio completo.</p>
-            </div>
+        </div>
+
+        <div class="diff-card fade-in-scroll">
+          <div class="diff-pill-num">04</div>
+          <div class="diff-info">
+            <h4>Envio para Todo o Brasil</h4>
+            <p>Entregamos em Boituva e região ou despachamos via transportadora com rastreamento.</p>
           </div>
         </div>
       </div>
+    </div>
+  </section>
 
-      <div style="flex: 1; min-width: 300px; display: flex; justify-content: center;">
-        <div style="position: relative; width: 100%; max-width: 420px;">
-          <!-- Decorative mockup grid -->
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
-            <div class="gallery-item" style="aspect-ratio: 3/4; background: linear-gradient(135deg, #1a1a1a, #111);">
-              <div style="text-align: center; padding: 20px;">
-                <div style="font-size: 4rem; margin-bottom: 8px;">👕</div>
-                <p style="color: #666; font-size: 0.8rem;">Camisas de Time</p>
+  <!-- Como Funciona -->
+  <section class="section-spacing" id="processo">
+    <div class="container">
+      <div class="section-header fade-in-scroll">
+        <div class="badge-tag">
+          <!-- SVG: Rota / Fluxo -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="6" cy="19" r="3"/><circle cx="18" cy="5" r="3"/><path d="M12 19h4.5a3.5 3.5 0 0 0 0-7h-9a3.5 3.5 0 0 1 0-7H12"/></svg>
+          Passo a Passo
+        </div>
+        <h2 class="section-title">Como funciona seu pedido</h2>
+        <p class="section-desc">Processo descomplicado em 4 etapas diretas</p>
+      </div>
+
+      <div class="timeline">
+        
+        <div class="timeline-step fade-in-scroll">
+          <div class="timeline-node">
+            <!-- SVG: Mensagem -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          </div>
+          <div class="timeline-content">
+            <h4>1. Ideia Inicial</h4>
+            <p>Nos mande sua ideia no WhatsApp: tipo de peça, quantidade aproximada e referências.</p>
+          </div>
+        </div>
+
+        <div class="timeline-step fade-in-scroll">
+          <div class="timeline-node">
+            <!-- SVG: Caneta / Desenho -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/></svg>
+          </div>
+          <div class="timeline-content">
+            <h4>2. Aprovação da Arte</h4>
+            <p>Criamos o layout digital do uniforme para você conferir detalhes de cores, fontes e escudos.</p>
+          </div>
+        </div>
+
+        <div class="timeline-step fade-in-scroll">
+          <div class="timeline-node">
+            <!-- SVG: Engrenagem / Confecção -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+          </div>
+          <div class="timeline-content">
+            <h4>3. Produção & Sublimação</h4>
+            <p>Após seu aval, imprimimos, prensamos e costuramos com rigoroso controle de costura.</p>
+          </div>
+        </div>
+
+        <div class="timeline-step fade-in-scroll">
+          <div class="timeline-node">
+            <!-- SVG: Caixa / Entrega -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+          </div>
+          <div class="timeline-content">
+            <h4>4. Entrega</h4>
+            <p>Kits etiquetados e separados por tamanho, prontos para a estreia da sua equipe.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Avaliações Touch Slider -->
+  <section class="section-spacing" id="depoimentos" style="background: #0d0d0d;">
+    <div class="container">
+      <div class="section-header fade-in-scroll">
+        <div class="badge-tag">
+          <!-- SVG: Estrela -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          Depoimentos
+        </div>
+        <h2 class="section-title">Quem veste aprova</h2>
+        <p class="section-desc">Arraste para o lado para ver o feedback de quem já produziu conosco</p>
+      </div>
+
+      <div class="testimonials-slider" id="testSlider">
+        
+        <div class="test-card">
+          <div>
+            <div class="test-author">
+              <div class="test-avatar">R</div>
+              <div>
+                <div class="test-name">Rodrigo M.</div>
+                <div class="test-role">Diretor de Futebol Amador</div>
               </div>
             </div>
-            <div class="gallery-item" style="aspect-ratio: 3/4; margin-top: 40px; background: linear-gradient(135deg, #1c0000, #111);">
-              <div style="text-align: center; padding: 20px;">
-                <div style="font-size: 4rem; margin-bottom: 8px;">🚩</div>
-                <p style="color: #666; font-size: 0.8rem;">Bandeiras</p>
+            <p class="test-text">"As camisas ficaram sensacionais! O tecido é muito leve e as cores ficaram vivas demais. O time inteiro elogiou na estreia do campeonato."</p>
+          </div>
+          <div class="test-stars">
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+        </div>
+
+        <div class="test-card">
+          <div>
+            <div class="test-author">
+              <div class="test-avatar">M</div>
+              <div>
+                <div class="test-name">Marcos Vinicius</div>
+                <div class="test-role">Organizador de Torcida</div>
               </div>
             </div>
-            <div class="gallery-item" style="aspect-ratio: 3/4; background: linear-gradient(135deg, #1c0000, #111);">
-              <div style="text-align: center; padding: 20px;">
-                <div style="font-size: 4rem; margin-bottom: 8px;">⚽</div>
-                <p style="color: #666; font-size: 0.8rem;">Uniformes</p>
+            <p class="test-text">"Pedimos 2 bandeirões e mais de 40 camisetas de torcida. Entrega antes do prazo e a impressão ficou impecável nos mínimos detalhes."</p>
+          </div>
+          <div class="test-stars">
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+        </div>
+
+        <div class="test-card">
+          <div>
+            <div class="test-author">
+              <div class="test-avatar">C</div>
+              <div>
+                <div class="test-name">Camila Ferreira</div>
+                <div class="test-role">Assessoria Esportiva</div>
               </div>
             </div>
-            <div class="gallery-item" style="aspect-ratio: 3/4; margin-top: -40px; background: linear-gradient(135deg, #1a1a1a, #111);">
-              <div style="text-align: center; padding: 20px;">
-                <div style="font-size: 4rem; margin-bottom: 8px;">🎨</div>
-                <p style="color: #666; font-size: 0.8rem;">Arte Exclusiva</p>
-              </div>
-            </div>
+            <p class="test-text">"Atendimento no WhatsApp muito prestativo. Ajustaram nossa logo, sugeriram a melhor cor para a gola e o resultado superou o mockup!"</p>
+          </div>
+          <div class="test-stars">
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
           </div>
         </div>
+
+      </div>
+
+      <div class="dots-indicator">
+        <span class="dot active"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
       </div>
     </div>
   </section>
 
-  <!-- Process Section -->
-  <section id="processo" style="padding: 100px 24px; background: #0a0a0a;">
-    <div style="max-width: 1000px; margin: 0 auto;">
-      <div style="text-align: center; margin-bottom: 70px;">
-        <div class="red-line" style="margin: 0 auto 16px;"></div>
-        <h2 class="section-title">Como <span style="color: #dc1414;">Funciona</span></h2>
-        <p class="section-subtitle" style="margin-top: 16px;">
-          Do orçamento à entrega, um processo simples e transparente
-        </p>
-      </div>
+  <!-- CTA Final & Contatos -->
+  <section class="cta-final" id="contato">
+    <div class="container">
+      <div class="fade-in-scroll">
+        <div class="badge-tag">
+          <!-- SVG: Relâmpago -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          Faça seu orçamento
+        </div>
+        <h2 class="section-title" style="margin-top: 12px;">Seu time pronto para vencer</h2>
+        <p class="section-desc">Mande uma mensagem agora e receba uma simulação personalizada para a sua equipe.</p>
+        
+        <div style="margin-top: 24px;">
+          <a href="https://wa.me/5515997181733?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20meu%20time." target="_blank" class="btn btn-red" style="font-size: 1rem; width: 100%; max-width: 320px;">
+            <!-- SVG: WhatsApp -->
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Chamar no WhatsApp
+          </a>
+        </div>
 
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px;">
-        <div class="process-step">
-          <div class="process-step-icon">💬</div>
-          <h4 style="font-weight: 700; margin-bottom: 8px; font-size: 1.1rem;">1. Contato</h4>
-          <p style="color: #888; font-size: 0.9rem; line-height: 1.6;">
-            Nos chame no WhatsApp e nos conte sua ideia. Informações sobre quantidade, modelo e personalização.
-          </p>
-        </div>
-        <div class="process-step">
-          <div class="process-step-icon">🎨</div>
-          <h4 style="font-weight: 700; margin-bottom: 8px; font-size: 1.1rem;">2. Criação da Arte</h4>
-          <p style="color: #888; font-size: 0.9rem; line-height: 1.6;">
-            Desenvolvemos o design exclusivo e enviamos para sua aprovação. Alterações ilimitadas até a aprovação final.
-          </p>
-        </div>
-        <div class="process-step">
-          <div class="process-step-icon">⚙️</div>
-          <h4 style="font-weight: 700; margin-bottom: 8px; font-size: 1.1rem;">3. Produção</h4>
-          <p style="color: #888; font-size: 0.9rem; line-height: 1.6;">
-            Arte aprovada, iniciamos a produção com os melhores materiais e tecnologia de sublimação.
-          </p>
-        </div>
-        <div class="process-step">
-          <div class="process-step-icon">📦</div>
-          <h4 style="font-weight: 700; margin-bottom: 8px; font-size: 1.1rem;">4. Entrega</h4>
-          <p style="color: #888; font-size: 0.9rem; line-height: 1.6;">
-            Produto finalizado e embalado com cuidado. Entregamos em Boituva e região ou enviamos para todo o Brasil.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Testimonials Section -->
-  <section id="depoimentos" style="padding: 100px 24px; background: linear-gradient(180deg, #0a0a0a 0%, #0f0f0f 100%);">
-    <div style="max-width: 1000px; margin: 0 auto;">
-      <div style="text-align: center; margin-bottom: 60px;">
-        <div class="red-line" style="margin: 0 auto 16px;"></div>
-        <h2 class="section-title">O que dizem nossos <span style="color: #dc1414;">clientes</span></h2>
-        <p class="section-subtitle" style="margin-top: 16px;">
-          A satisfação dos nossos clientes é nosso maior troféu
-        </p>
-      </div>
-
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px;">
-        <div class="testimonial-card">
-          <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px; position: relative; z-index: 1;">
-            <div style="width: 48px; height: 48px; border-radius: 50%; background: linear-gradient(135deg, #dc1414, #b01010); display: flex; align-items: center; justify-content: center; font-weight: 700;">R</div>
+        <div class="contact-links-grid">
+          
+          <a href="https://wa.me/5515997181733" target="_blank" class="contact-item-card">
+            <div class="contact-icon">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            </div>
             <div>
-              <div style="font-weight: 600;">Rafael S.</div>
-              <div style="color: #888; font-size: 0.85rem;">Capitão de time amador</div>
+              <div class="contact-title">WhatsApp</div>
+              <div class="contact-val">(15) 99718-1733</div>
+            </div>
+          </a>
+
+          <a href="https://www.instagram.com/sl.sports/" target="_blank" class="contact-item-card">
+            <div class="contact-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            </div>
+            <div>
+              <div class="contact-title">Instagram</div>
+              <div class="contact-val">@sl.sports</div>
+            </div>
+          </a>
+
+          <div class="contact-item-card">
+            <div class="contact-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a8 8 0 0 0-8 8c0 5.25 8 12 8 12s8-6.75 8-12a8 8 0 0 0-8-8z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div>
+              <div class="contact-title">Localização</div>
+              <div class="contact-val">Boituva - SP</div>
             </div>
           </div>
-          <p style="color: #bbb; font-size: 0.95rem; line-height: 1.7; position: relative; z-index: 1;">
-            "As camisas ficaram sensacionais! Qualidade absurda, o time inteiro adorou. Com certeza vamos pedir mais na próxima temporada."
-          </p>
-          <div style="color: #dc1414; margin-top: 12px; letter-spacing: 2px;">★★★★★</div>
+
         </div>
 
-        <div class="testimonial-card">
-          <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px; position: relative; z-index: 1;">
-            <div style="width: 48px; height: 48px; border-radius: 50%; background: linear-gradient(135deg, #dc1414, #b01010); display: flex; align-items: center; justify-content: center; font-weight: 700;">M</div>
-            <div>
-              <div style="font-weight: 600;">Marcos L.</div>
-              <div style="color: #888; font-size: 0.85rem;">Organizador de torneio</div>
-            </div>
-          </div>
-          <p style="color: #bbb; font-size: 0.95rem; line-height: 1.7; position: relative; z-index: 1;">
-            "Fiz uniforme pra 8 equipes diferentes e todas as camisas vieram perfeitas. Atendimento nota 10, muito rápido no WhatsApp."
-          </p>
-          <div style="color: #dc1414; margin-top: 12px; letter-spacing: 2px;">★★★★★</div>
-        </div>
-
-        <div class="testimonial-card">
-          <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px; position: relative; z-index: 1;">
-            <div style="width: 48px; height: 48px; border-radius: 50%; background: linear-gradient(135deg, #dc1414, #b01010); display: flex; align-items: center; justify-content: center; font-weight: 700;">A</div>
-            <div>
-              <div style="font-weight: 600;">Anderson P.</div>
-              <div style="color: #888; font-size: 0.85rem;">Torcida organizada</div>
-            </div>
-          </div>
-          <p style="color: #bbb; font-size: 0.95rem; line-height: 1.7; position: relative; z-index: 1;">
-            "As bandeiras ficaram incríveis! Cores vibrantes, material resistente. Já é a terceira vez que fazemos com a SL Sports."
-          </p>
-          <div style="color: #dc1414; margin-top: 12px; letter-spacing: 2px;">★★★★★</div>
-        </div>
       </div>
     </div>
   </section>
 
-  <!-- CTA Section -->
-  <section id="contato" style="padding: 100px 24px; background: linear-gradient(135deg, #0a0a0a 0%, #1a0000 50%, #0a0a0a 100%); position: relative; overflow: hidden;">
-    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 600px; height: 600px; background: radial-gradient(circle, rgba(220,20,20,0.08) 0%, transparent 70%); pointer-events: none;"></div>
-    
-    <div style="max-width: 700px; margin: 0 auto; text-align: center; position: relative; z-index: 1;">
-      <div style="display: inline-block; background: rgba(220,20,20,0.1); border: 1px solid rgba(220,20,20,0.3); border-radius: 50px; padding: 8px 20px; margin-bottom: 24px;">
-        <span style="color: #dc1414; font-weight: 600; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px;">🔥 Faça seu orçamento agora</span>
-      </div>
-      
-      <h2 style="font-size: 2.8rem; font-weight: 900; line-height: 1.1; margin-bottom: 20px;">
-        Pronto para vestir seu time com <span style="color: #dc1414;">estilo?</span>
-      </h2>
-      <p style="color: #888; font-size: 1.1rem; line-height: 1.7; margin-bottom: 40px;">
-        Entre em contato agora pelo WhatsApp e solicite seu orçamento sem compromisso. 
-        Atendimento rápido e personalizado.
-      </p>
-
-      <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 40px;">
-        <a href="https://wa.me/5515997181733?text=Ol%C3%A1!%20Gostaria%20de%20fazer%20um%20or%C3%A7amento%20de%20uniformes%20personalizados." class="cta-btn" target="_blank" style="font-size: 1.2rem; padding: 18px 48px;">
-          <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-          Chamar no WhatsApp
-        </a>
-      </div>
-
-      <!-- Contact info -->
-      <div style="display: flex; gap: 40px; justify-content: center; flex-wrap: wrap;">
-        <div style="display: flex; align-items: center; gap: 10px;">
-          <div style="width: 40px; height: 40px; border-radius: 10px; background: rgba(220,20,20,0.1); display: flex; align-items: center; justify-content: center;">📱</div>
-          <div style="text-align: left;">
-            <div style="color: #888; font-size: 0.8rem;">WhatsApp</div>
-            <div style="font-weight: 600; font-size: 0.95rem;">(15) 99718-1733</div>
-          </div>
-        </div>
-        <div style="display: flex; align-items: center; gap: 10px;">
-          <div style="width: 40px; height: 40px; border-radius: 10px; background: rgba(220,20,20,0.1); display: flex; align-items: center; justify-content: center;">📍</div>
-          <div style="text-align: left;">
-            <div style="color: #888; font-size: 0.8rem;">Localização</div>
-            <div style="font-weight: 600; font-size: 0.95rem;">Boituva - SP</div>
-          </div>
-        </div>
-        <div style="display: flex; align-items: center; gap: 10px;">
-          <div style="width: 40px; height: 40px; border-radius: 10px; background: rgba(220,20,20,0.1); display: flex; align-items: center; justify-content: center;">📸</div>
-          <div style="text-align: left;">
-            <div style="color: #888; font-size: 0.8rem;">Instagram</div>
-            <div style="font-weight: 600; font-size: 0.95rem;">@sl.sports</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer style="background: #050505; padding: 40px 24px; border-top: 1px solid rgba(255,255,255,0.05);">
-    <div style="max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;">
-      <div>
-        <span style="font-weight: 800; font-size: 1.2rem;">SL<span style="color: #dc1414;">SPORTS</span></span>
-        <p style="color: #555; font-size: 0.85rem; margin-top: 4px;">Vestindo os Melhores</p>
-      </div>
-      <div style="display: flex; gap: 20px;">
-        <a href="https://www.instagram.com/sl.sports/" target="_blank" style="width: 40px; height: 40px; border-radius: 10px; background: rgba(255,255,255,0.05); display: flex; align-items: center; justify-content: center; text-decoration: none; transition: all 0.3s ease; color: #888;" onmouseover="this.style.background='rgba(220,20,20,0.2)';this.style.color='#dc1414'" onmouseout="this.style.background='rgba(255,255,255,0.05)';this.style.color='#888'">
-          <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
-        </a>
-        <a href="https://wa.me/5515997181733" target="_blank" style="width: 40px; height: 40px; border-radius: 10px; background: rgba(255,255,255,0.05); display: flex; align-items: center; justify-content: center; text-decoration: none; transition: all 0.3s ease; color: #888;" onmouseover="this.style.background='rgba(37,211,102,0.2)';this.style.color='#25D366'" onmouseout="this.style.background='rgba(255,255,255,0.05)';this.style.color='#888'">
-          <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-        </a>
-      </div>
-      <div style="color: #444; font-size: 0.8rem;">
-        © 2026 SL Sports. Todos os direitos reservados.
-      </div>
+  <!-- Rodapé -->
+  <footer class="footer">
+    <div class="container">
+      <p style="font-weight: 700; color: #a3a3a3; margin-bottom: 4px;">SL SPORTS — VESTINDO OS MELHORES</p>
+      <p>© 2026 Todos os direitos reservados. Boituva - SP.</p>
     </div>
   </footer>
 
-  <!-- Floating WhatsApp Button -->
-  <a href="https://wa.me/5515997181733?text=Ol%C3%A1!%20Gostaria%20de%20fazer%20um%20or%C3%A7amento%20de%20uniformes%20personalizados." class="whatsapp-float" target="_blank" title="Fale conosco pelo WhatsApp">
-    <svg width="32" height="32" fill="#fff" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-  </a>
+  <!-- Sticky Mobile Bar -->
+  <div class="mobile-sticky-bar" id="stickyBar">
+    <a href="https://wa.me/5515997181733?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20uniformes." target="_blank" class="btn btn-red btn-sticky-cta">
+      <!-- SVG: WhatsApp -->
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Pedir Orçamento
+    </a>
+    <a href="https://www.instagram.com/sl.sports/" target="_blank" class="btn-sticky-icon" aria-label="Ver Instagram">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+    </a>
+  </div>
 
   <script>
-    // Navbar scroll effect
+    // Header Scroll Effect & Sticky Bar
+    const header = document.getElementById('header');
+    const stickyBar = document.getElementById('stickyBar');
+
     window.addEventListener('scroll', () => {
-      const navbar = document.getElementById('navbar');
-      if (window.scrollY > 50) {
-        navbar.classList.add('scrolled');
+      const scrollPos = window.scrollY;
+      
+      if (scrollPos > 40) {
+        header.classList.add('scrolled');
       } else {
-        navbar.classList.remove('scrolled');
+        header.classList.remove('scrolled');
       }
+
+      // Show bottom sticky bar after scroll past hero (mobile)
+      if (scrollPos > 320) {
+        stickyBar.classList.add('visible');
+      } else {
+        stickyBar.classList.remove('visible');
+      }
+    }, { passive: true });
+
+    // Menu Mobile Trigger
+    const menuToggle = document.getElementById('menuToggle');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    menuToggle.addEventListener('click', () => {
+      const isActive = menuToggle.classList.toggle('active');
+      mobileMenu.classList.toggle('active', isActive);
+      document.body.style.overflow = isActive ? 'hidden' : '';
     });
 
-    // Mobile menu toggle
-    function toggleMenu() {
-      document.getElementById('navLinks').classList.toggle('active');
+    function closeNav() {
+      menuToggle.classList.remove('active');
+      mobileMenu.classList.remove('active');
+      document.body.style.overflow = '';
     }
 
-    // Counter animation
-    function animateCounters() {
-      const counters = document.querySelectorAll('.counter');
-      counters.forEach(counter => {
-        const target = +counter.getAttribute('data-target');
-        const duration = 2000;
-        const step = target / (duration / 16);
-        let current = 0;
-        
-        const update = () => {
-          current += step;
-          if (current < target) {
-            counter.textContent = Math.floor(current);
-            requestAnimationFrame(update);
-          } else {
-            counter.textContent = target;
-          }
-        };
-        update();
-      });
-    }
-
-    // Intersection Observer for animations
-    const observerOptions = { threshold: 0.2, rootMargin: '0px 0px -50px 0px' };
-    const observer = new IntersectionObserver((entries) => {
+    // Scroll Reveal com IntersectionObserver
+    const revealObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          if (entry.target.classList.contains('counter-section')) {
-            animateCounters();
-          }
-          entry.target.style.opacity = '1';
-          entry.target.style.transform = 'translateY(0)';
+          entry.target.classList.add('is-visible');
+          revealObserver.unobserve(entry.target);
         }
       });
-    }, observerOptions);
-
-    // Observe sections
-    document.querySelectorAll('section').forEach(section => {
-      observer.observe(section);
+    }, {
+      threshold: 0.12,
+      rootMargin: '0px 0px -40px 0px'
     });
 
-    // Trigger counter animation when stats bar is visible
-    const statsSection = document.querySelector('section:nth-of-type(2)');
+    document.querySelectorAll('.fade-in-scroll').forEach(el => {
+      revealObserver.observe(el);
+    });
+
+    // Contador de Números
+    let countersAnimated = false;
+    const statsSection = document.querySelector('.stats-section');
+    const counterObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !countersAnimated) {
+          countersAnimated = true;
+          document.querySelectorAll('.counter').forEach(counter => {
+            const target = +counter.getAttribute('data-target');
+            const duration = 1400;
+            const stepTime = 25;
+            const steps = duration / stepTime;
+            const increment = target / steps;
+            let current = 0;
+
+            const timer = setInterval(() => {
+              current += increment;
+              if (current >= target) {
+                counter.innerText = target;
+                clearInterval(timer);
+              } else {
+                counter.innerText = Math.floor(current);
+              }
+            }, stepTime);
+          });
+          counterObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.3 });
+
     if (statsSection) {
-      const counterObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            animateCounters();
-            counterObserver.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.5 });
       counterObserver.observe(statsSection);
     }
 
-    // Smooth scroll for nav links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          // Close mobile menu
-          document.getElementById('navLinks').classList.remove('active');
-        }
-      });
-    });
-  </script>
+    // Slider de Testemunhos - Sincronização dos Dots
+    const slider = document.getElementById('testSlider');
+    const dots = document.querySelectorAll('.dot');
 
+    if (slider) {
+      slider.addEventListener('scroll', () => {
+        const cardWidth = slider.querySelector('.test-card').offsetWidth + 14;
+        const activeIdx = Math.round(slider.scrollLeft / cardWidth);
+        dots.forEach((dot, idx) => {
+          dot.classList.toggle('active', idx === activeIdx);
+        });
+      }, { passive: true });
+    }
+  </script>
 </body>
 </html>
